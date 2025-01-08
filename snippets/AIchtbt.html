@@ -1,27 +1,200 @@
-.chat-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: bold;
-    animation: breathing 2s infinite;
-    transition: transform 0.3s ease;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Chatbot: Talk to AI Professor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6b73ff, #000dff);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-@keyframes breathing {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 10px rgba(0, 123, 255, 0.4);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(0, 123, 255, 0.7);
-    }
-}
+        .chat-footer-wrapper {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+            transition: height 0.3s ease;
+            overflow: hidden;
+        }
 
-.chat-header:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(0, 123, 255, 0.8);
-}
+        .chat-footer-wrapper.collapsed {
+            height: 40px;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .chat-header .toggle-btn {
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .chat-container {
+            height: 400px;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f1f1f1;
+            scrollbar-width: thin;
+            scrollbar-color: #007bff #f1f1f1;
+            scroll-behavior: smooth;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #007bff;
+            border-radius: 10px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            max-width: 75%;
+        }
+
+        .message.user {
+            background: #007bff;
+            color: #fff;
+            margin-left: auto;
+        }
+
+        .message.bot {
+            background: #f1f1f1;
+            color: #333;
+            margin-right: auto;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: #f9f9f9;
+            border-top: 2px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            margin-right: 10px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-input input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .chat-input button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .chat-input button:hover {
+            background: linear-gradient(135deg, #0056b3, #003a80);
+        }
+
+        .chat-input button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-footer-wrapper" id="chatFooterWrapper">
+    <div class="chat-header" onclick="toggleChat()">
+        Talk to AI Professor
+        <button class="toggle-btn" id="toggleBtn">−</button>
+    </div>
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Toggle the chat container visibility
+    function toggleChat() {
+        const chatFooterWrapper = document.getElementById('chatFooterWrapper');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const isCollapsed = chatFooterWrapper.classList.toggle('collapsed');
+        toggleBtn.textContent = isCollapsed ? '+' : '−';
+    }
+
+    // Initialize the chat with a welcome message
+    window.onload = () => {
+        appendMessage("Hi there! I'm the AI Professor. How can I assist you today?", 'bot');
+        document.getElementById('userInput').focus();
+    };
+
+    // Append messages to the chat
+    function appendMessage(content, sender) {
+        const chatMessages = document.getElementById('chatMessages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}`;
+        messageDiv.textContent = content;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Handle user input and bot responses
+    function sendMessage() {
+        const userInput = document.getElementById('userInput').value.trim();
+        if (!userInput) return;
+
+        appendMessage(userInput, 'user');
+        document.getElementById('userInput').value = '';
+
+        setTimeout(() => {
+            appendMessage("Thank you for your question. I'll get back to you soon! 😊", 'bot');
+        }, 1000); // Simulate bot response delay
+    }
+</script>
+
+</body>
+</html>
