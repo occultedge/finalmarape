@@ -6,61 +6,153 @@
   <title>Occultedge Botswana - Hands-On Courses</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <style>
-    body {
-      background-color: #f8f9fa;
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+  /* General body styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    overflow-x: hidden;
+  }
+
+  /* Header section with animated droplets */
+  .header {
+    background: linear-gradient(90deg, #007bff, #28a745, #dc3545);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header h1 {
+    font-size: 3rem;
+    margin: 0;
+    z-index: 10;
+    position: relative;
+  }
+
+  .header p {
+    font-size: 1.5rem;
+    margin: 10px 0 0;
+    z-index: 10;
+    position: relative;
+  }
+
+  /* Droplets animation */
+  .droplet {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: fall 5s infinite linear;
+    opacity: 0.7;
+  }
+
+  .droplet:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.8);
+    animation-duration: 4s;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-100vh);
+      opacity: 0;
     }
-    .header {
-      background: linear-gradient(90deg, #007bff, #28a745, #dc3545);
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
+    50% {
+      opacity: 1;
     }
-    .header h1, .header p {
-      margin: 0;
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
     }
-    .course-card {
-      border: 1px solid #007bff;
-      transition: transform 0.3s ease;
-    }
-    .course-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    .course-card .card-title {
-      color: #dc3545;
-    }
-    .vibrant-section {
-      background: linear-gradient(90deg, #28a745, #dc3545, #007bff);
-      color: #fff;
-      padding: 50px 20px;
-    }
-    .vibrant-section h2 {
-      color: #fff;
-    }
-    .faq-section {
-      background-color: #f0f0f0;
-      padding: 30px;
-    }
-    .faq-section .accordion-button {
-      background-color: #007bff;
-      color: #fff;
-    }
-    .faq-section .accordion-button:not(.collapsed) {
-      background-color: #28a745;
-    }
-    .contact-section {
-      background: linear-gradient(90deg, #007bff, #28a745);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .footer {
-      background-color: #343a40;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-    }
-  </style>
+  }
+
+  /* Vibrant Section */
+  .vibrant-section {
+    background: linear-gradient(90deg, #28a745, #dc3545, #007bff);
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 5px solid #343a40;
+  }
+
+  .vibrant-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .vibrant-section i {
+    font-size: 3rem;
+    margin: 20px 0;
+    color: #f8f9fa;
+  }
+
+  /* Course Cards */
+  .course-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px;
+    gap: 20px;
+  }
+
+  .course-card {
+    background: linear-gradient(90deg, #007bff, #28a745);
+    border-radius: 10px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+
+  .course-card i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+
+  .course-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .course-card h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+
+  .course-card p {
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  .footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .footer a:hover {
+    color: #28a745;
+    text-decoration: underline;
+  }
+</style>
+
 </head>
 <body>
   <!-- Header -->
@@ -69,6 +161,42 @@
     
     <p>Your pathway to world-class Training</p>
   </header>
+<div class="header">
+  <h1>Welcome to Our Professional Platform</h1>
+  <p>Enhance your skills with our curated courses</p>
+
+  <!-- Animated droplets -->
+  <div class="droplet" style="top: -100px; left: 10%;"></div>
+  <div class="droplet" style="top: -200px; left: 30%;"></div>
+  <div class="droplet" style="top: -300px; left: 50%;"></div>
+  <div class="droplet" style="top: -400px; left: 70%;"></div>
+  <div class="droplet" style="top: -500px; left: 90%;"></div>
+</div>
+
+<div class="vibrant-section">
+  <i class="fas fa-graduation-cap"></i>
+  <h2>Explore Our Courses</h2>
+  <p>Learn new skills with expert-led classes.</p>
+</div>
+
+<div class="course-container">
+  <div class="course-card">
+    <i class="fas fa-code"></i>
+    <h3>Web Development</h3>
+    <p>Master HTML, CSS, and JavaScript with our hands-on projects.</p>
+  </div>
+  <div class="course-card">
+    <i class="fas fa-paint-brush"></i>
+    <h3>Graphic Design</h3>
+    <p>Create stunning designs using modern tools and techniques.</p>
+  </div>
+  <div class="course-card">
+    <i class="fas fa-database"></i>
+    <h3>Data Science</h3>
+    <p>Analyze and visualize data with Python and R.</p>
+  </div>
+</div>
+
 
  <div class="container my-5">
     <h2 class="text-center text-danger mb-4">Hands-On Courses</h2>
@@ -77,7 +205,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Mechanic</h5>
+                    <h5 class="card-title">🧰️Mechanic</h5>
                     <p class="card-text">
                         Learn the fundamentals of vehicle repair and servicing with expert guidance. Includes hands-on practice with real vehicles, focusing on engines, transmissions, and diagnostics.
                     </p>
@@ -90,7 +218,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">TV Repair</h5>
+                    <h5 class="card-title">📺️TV Repair</h5>
                     <p class="card-text">
                         Master the art of repairing LED/LCD TVs, including troubleshooting display issues, audio systems, and circuit boards. Perfect for aspiring electronics technicians.
                     </p>
@@ -103,7 +231,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Fridge Repair</h5>
+                    <h5 class="card-title">🤖️Fridge Repair</h5>
                     <p class="card-text">
                         Become an expert in diagnosing and repairing refrigerators. Learn about compressors, cooling systems, and electrical components with real-world practice.
                     </p>
@@ -116,7 +244,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Mobile Phone Repair</h5>
+                    <h5 class="card-title">📲️Mobile Phone Repair</h5>
                     <p class="card-text">
                         Equip yourself with skills to repair smartphones, including screen replacement, battery fixes, software troubleshooting, and hardware repairs.
                     </p>
@@ -129,7 +257,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Baking and Confectionery</h5>
+                    <h5 class="card-title">🎂️Baking and Confectionery</h5>
                     <p class="card-text">
                         Dive into the art of baking and learn to create delicious pastries, cakes, and breads. Includes hands-on practice with industry-grade equipment.
                     </p>
@@ -142,7 +270,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Solar Panel Installation</h5>
+                    <h5 class="card-title">🌞️Solar Panel Installation</h5>
                     <p class="card-text">
                         Learn to design and install solar panels, including electrical wiring, system sizing, and maintenance. Focus on sustainable energy solutions.
                     </p>
@@ -155,7 +283,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Hairdressing and Styling</h5>
+                    <h5 class="card-title">💇️Hairdressing and Styling</h5>
                     <p class="card-text">
                         Gain professional skills in hair cutting, styling, coloring, and treatment techniques. Ideal for those entering the beauty industry.
                     </p>
@@ -168,7 +296,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Carpentry and Woodworking</h5>
+                    <h5 class="card-title">🪚️Carpentry and Woodworking</h5>
                     <p class="card-text">
                         Learn the fundamentals of carpentry, including furniture making, wood finishing, and modern woodworking techniques.
                     </p>
@@ -181,7 +309,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">AC Repair and Maintenance</h5>
+                    <h5 class="card-title">🆒️AC Repair and Maintenance</h5>
                     <p class="card-text">
                         Master air conditioning systems, including troubleshooting, installation, and preventive maintenance for residential and commercial units.
                     </p>
@@ -198,7 +326,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Plumbing</h5>
+                    <h5 class="card-title">🧑‍🔧️Plumbing</h5>
                     <p class="card-text">
                         Learn the skills to install and repair plumbing systems in residential and commercial spaces, focusing on modern tools and techniques.
                     </p>
@@ -211,7 +339,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Welding and Fabrication</h5>
+                    <h5 class="card-title">🥽️Welding and Fabrication</h5>
                     <p class="card-text">
                         Master the art of welding and metal fabrication. Learn to work with various materials and create durable, high-quality structures.
                     </p>
@@ -224,7 +352,7 @@
         <div class="col-md-4 mb-4">
             <div class="card course-card">
                 <div class="card-body">
-                    <h5 class="card-title">Computer Hardware and Networking</h5>
+                    <h5 class="card-title">💻️Computer Hardware and Networking</h5>
                     <p class="card-text">
                         Learn to assemble, troubleshoot, and repair computers. Gain networking skills to set up and manage IT infrastructure.
                     </p>
@@ -540,185 +668,332 @@
 </div>
 
 
-  <div class="faq-section container my-5">
-    <h2 class="text-center text-primary mb-4">Frequently Asked Questions</h2>
-    <div class="accordion" id="faqAccordion">
-        <!-- Course Details -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq1">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                    What is the duration of each course?
-                </button>
-            </h2>
-            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    Each course is 7 weeks long, designed to provide comprehensive training in a short span.
-                </div>
-            </div>
-        </div>
+  <style>
+  /* General Styles */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+  }
 
-        <!-- Delivery Mode -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq2">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                    How are the courses delivered?
-                </button>
-            </h2>
-            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    Courses are delivered through a blended learning model that includes live online classes taught by expert faculty, hands-on practical training, and access to recorded lectures and study materials.
-                </div>
-            </div>
-        </div>
+  /* FAQ Section */
+  .faq-section {
+    background: linear-gradient(90deg, #28a745, #007bff, #dc3545);
+    padding: 50px 20px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
 
-        <!-- Certification -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq3">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                    Do I receive a certificate after completing the course?
-                </button>
-            </h2>
-            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    Yes, you will receive an internationally recognized certificate upon successfully completing the course.
-                </div>
-            </div>
-        </div>
+  .faq-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-out;
+  }
 
-        <!-- Eligibility -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq4">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                    Are there any prerequisites for enrolling?
-                </button>
-            </h2>
-            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    Most courses do not require prior experience and are designed for beginners. However, some advanced courses may have specific prerequisites.
-                </div>
-            </div>
-        </div>
+  /* Accordion */
+  .accordion-item {
+    margin-bottom: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: slideIn 1s ease-out;
+  }
 
-        <!-- Payment -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq5">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                    What are the payment options available?
-                </button>
-            </h2>
-            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    We offer flexible payment options, including bank transfers, mobile money, and credit/debit card payments. Please contact our support team for more details.
-                </div>
-            </div>
-        </div>
+  .accordion-header {
+    background: linear-gradient(90deg, #28a745, #007bff);
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
 
-        <!-- Equipment for Online Learning -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq6">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                    Do I need any special equipment for the online classes?
-                </button>
-            </h2>
-            <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    You will need a stable internet connection, a laptop or desktop, and basic tools depending on the course. Specific requirements will be communicated upon registration.
-                </div>
-            </div>
-        </div>
+  .accordion-header:hover {
+    background: linear-gradient(90deg, #dc3545, #28a745);
+  }
 
-        <!-- Job Opportunities -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq7">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-                    Will I get job placement assistance after the course?
-                </button>
-            </h2>
-            <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="faq7" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    While we do not guarantee job placements, we offer guidance, resources, and certifications to help you succeed in the job market.
-                </div>
-            </div>
-        </div>
+  .accordion-button {
+    color: white;
+    font-weight: bold;
+    background: none;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
 
-        <!-- Hands-On Training -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq8">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
-                    Is there any hands-on practical training included?
-                </button>
-            </h2>
-            <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="faq8" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    Yes, all courses include hands-on practical training to ensure you gain real-world experience in your chosen field.
-                </div>
-            </div>
-        </div>
+  .accordion-button:focus {
+    outline: none;
+  }
 
-        <!-- Course Materials -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq9">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
-                    Will I get access to course materials after the course is over?
-                </button>
-            </h2>
-            <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="faq9" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    Yes, you will retain access to recorded lectures, assignments, and study materials for future reference.
-                </div>
-            </div>
-        </div>
+  .accordion-button.collapsed::after {
+    content: "▼";
+    float: right;
+  }
 
-        <!-- International Recognition -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq10">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
-                    Are the certifications internationally recognized?
-                </button>
-            </h2>
-            <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="faq10" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    Yes, all certifications provided by Occultedge Botswana are internationally recognized and enhance your global employability.
-                </div>
-            </div>
-        </div>
+  .accordion-button::after {
+    content: "▲";
+    float: right;
+    font-size: 1.2rem;
+    color: #f8f9fa;
+    transition: transform 0.3s ease-in-out;
+  }
 
-        <!-- Language of Instruction -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq11">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
-                    What is the language of instruction for the courses?
-                </button>
-            </h2>
-            <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="faq11" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    All courses are conducted in English. However, our instructors are trained to ensure clarity for non-native speakers.
-                </div>
-            </div>
-        </div>
+  .accordion-body {
+    padding: 15px;
+    background: white;
+    color: #333;
+    border-radius: 0 0 8px 8px;
+    line-height: 1.6;
+    animation: fadeIn 1s ease-in-out;
+  }
 
-        <!-- Refund Policy -->
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="faq12">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
-                    What is your refund policy?
-                </button>
-            </h2>
-            <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="faq12" data-bs-parent="#faqAccordion">
-                <div class="accordion-body">
-                    Refunds are processed on a case-by-case basis. Please refer to our refund policy or contact support for detailed information.
-                </div>
-            </div>
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>
+<div class="faq-section container my-5">
+  <h2 class="text-center">Frequently Asked Questions</h2>
+  <div class="accordion" id="faqAccordion">
+
+    <!-- Course Details -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq1">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+          What is the duration of each course?
+        </button>
+      </h2>
+      <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Each course is 7 weeks long, designed to provide comprehensive training in a short span.
         </div>
+      </div>
     </div>
+
+    <!-- Delivery Mode -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq2">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+          How are the courses delivered?
+        </button>
+      </h2>
+      <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Courses are delivered through a blended learning model that includes live online classes taught by expert faculty, hands-on practical training, and access to recorded lectures and study materials.
+        </div>
+      </div>
+    </div>
+
+    <!-- Certification -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq3">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+          Do I receive a certificate after completing the course?
+        </button>
+      </h2>
+      <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Yes, you will receive an internationally recognized certificate upon successfully completing the course.
+        </div>
+      </div>
+    </div>
+
+    <!-- Eligibility -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq4">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+          Are there any prerequisites for enrolling?
+        </button>
+      </h2>
+      <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Most courses do not require prior experience and are designed for beginners. However, some advanced courses may have specific prerequisites.
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Options -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq5">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+          What are the payment options available?
+        </button>
+      </h2>
+      <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          We offer flexible payment options, including bank transfers, mobile money, and credit/debit card payments. Please contact our support team for more details.
+        </div>
+      </div>
+    </div>
+
+    <!-- Equipment for Online Learning -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq6">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+          Do I need any special equipment for the online classes?
+        </button>
+      </h2>
+      <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          You will need a stable internet connection, a laptop or desktop, and basic tools depending on the course. Specific requirements will be communicated upon registration.
+        </div>
+      </div>
+    </div>
+
+    <!-- Job Placement Assistance -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq7">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+          Will I get job placement assistance after the course?
+        </button>
+      </h2>
+      <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="faq7" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          While we do not guarantee job placements, we offer guidance, resources, and certifications to help you succeed in the job market.
+        </div>
+      </div>
+    </div>
+
+    <!-- Hands-On Training -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq8">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+          Is there any hands-on practical training included?
+        </button>
+      </h2>
+      <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="faq8" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Yes, all courses include hands-on practical training to ensure you gain real-world experience in your chosen field.
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Materials -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq9">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+          Will I get access to course materials after the course is over?
+        </button>
+      </h2>
+      <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="faq9" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Yes, you will retain access to recorded lectures, assignments, and study materials for future reference.
+        </div>
+      </div>
+    </div>
+
+    <!-- Certification Recognition -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq10">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+          Are the certifications internationally recognized?
+        </button>
+      </h2>
+      <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="faq10" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Yes, all certifications provided by Occultedge Botswana are internationally recognized and enhance your global employability.
+        </div>
+      </div>
+    </div>
+
+    <!-- Refund Policy -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="faq11">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
+          What is your refund policy?
+        </button>
+      </h2>
+      <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="faq11" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Refunds are processed on a case-by-case basis. Please refer to our refund policy or contact support for detailed information.
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
   <!-- Contact Section -->
-  <div class="contact-section">
-    
-    <img src="https://static.wixstatic.com/media/22a959_d3da72d9901947378fb78e2646a47f47~mv2_d_1427_1467_s_2.jpg/v1/fill/w_640,h_480,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/22a959_d3da72d9901947378fb78e2646a47f47~mv2_d_1427_1467_s_2.jpg" alt="Mrs. Anolah Marape" class="img-fluid mt-3 rounded-circle" style="max-width: 150px;">
-  </div>
+  <style>
+  /* Contact Section Styling */
+  .contact-section {
+    background: linear-gradient(90deg, #007bff, #28a745, #dc3545);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 5px solid #343a40;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Styling and animation for the image */
+  .contact-section img {
+    max-width: 150px;
+    border-radius: 50%;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: bounce 2s infinite, rotate 6s infinite linear;
+  }
+
+  /* Bounce animation */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  /* Rotate animation */
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<!-- Contact Section HTML -->
+<div class="contact-section">
+  <img 
+    src="https://static.wixstatic.com/media/22a959_d3da72d9901947378fb78e2646a47f47~mv2_d_1427_1467_s_2.jpg/v1/fill/w_640,h_480,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/22a959_d3da72d9901947378fb78e2646a47f47~mv2_d_1427_1467_s_2.jpg" 
+    alt="Mrs. Anolah Marape" 
+    class="img-fluid"
+  >
+</div>
+
 
   <!-- Footer -->
   <footer class="footer">
@@ -728,4 +1003,3 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
