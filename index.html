@@ -162,13 +162,13 @@
 
     /* Circular Chat Toggle Button */
     #chat-toggle {
-        width: 60px;
-        height: 60px;
+        width: 0px;
+        height: 0px;
         border: none;
         border-radius: 50%;
         background: linear-gradient(135deg, #007bff, #0056b3);
         color: white;
-        font-size: 25px;
+        font-size: 0px;
         font-weight: bold;
         cursor: pointer;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -240,6 +240,115 @@
 </script>
 
     <footer>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Integration</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6b73ff, #000dff);
+        }
+
+        .footer-chatbot {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px; /* Minimized height */
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border-top: 3px solid #0056b3;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+            transition: height 0.3s ease;
+            overflow: hidden;
+        }
+
+        .footer-chatbot.expanded {
+            height: 80vh; /* Expanded height */
+        }
+
+        .footer-chatbot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .footer-chatbot-header .toggle-btn {
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .footer-chatbot-iframe {
+            width: 100%;
+            height: calc(100% - 60px); /* Deduct header height */
+            border: none;
+            overflow: auto;
+            transition: height 0.3s ease;
+        }
+
+        .footer-chatbot-iframe::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .footer-chatbot-iframe::-webkit-scrollbar-thumb {
+            background: #0056b3;
+            border-radius: 10px;
+        }
+
+        .footer-chatbot-iframe::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .footer-chatbot-header {
+                font-size: 1rem;
+            }
+            .footer-chatbot-iframe {
+                height: calc(100% - 50px); /* Adjust for smaller header */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Footer Chatbot Section -->
+    <div class="footer-chatbot" id="chatbotFooter">
+        <div class="footer-chatbot-header" onclick="toggleChatbot()">
+            Talk to AI Professor
+            <button class="toggle-btn" id="toggleBtn">▲</button>
+        </div>
+        <iframe
+            src="snippets/AIchtbt.html"
+            class="footer-chatbot-iframe"
+            id="chatbotIframe"
+        ></iframe>
+    </div>
+
+    <script>
+        // Function to toggle chatbot expansion
+        function toggleChatbot() {
+            const chatbotFooter = document.getElementById('chatbotFooter');
+            const toggleBtn = document.getElementById('toggleBtn');
+            const isExpanded = chatbotFooter.classList.toggle('expanded');
+            toggleBtn.textContent = isExpanded ? '▼' : '▲';
+        }
+    </script>
+</body>
+</html>
+
     <h2>Contact Us</h2>
     <p><strong>Phone:</strong> +267-76651545</p>
     <p><strong>Address:</strong> PLOT 7853, Maruapula, Gaborone, Botswana</p>
@@ -247,4 +356,3 @@
     </footer>
 </body>
 </html>
-
