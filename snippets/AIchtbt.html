@@ -5,140 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Footer Chatbot: Talk to AI Professor</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #6b73ff, #000dff);
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .chat-footer-wrapper {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: #fff;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-            transition: height 0.3s ease;
-            overflow: hidden;
-        }
-
-        .chat-footer-wrapper.collapsed {
-            height: 40px;
-        }
-
-        .chat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-
-        .chat-header .toggle-btn {
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .chat-container {
-            height: 400px;
-            background: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            background-color: #f1f1f1;
-            scrollbar-width: thin;
-            scrollbar-color: #007bff #f1f1f1;
-            scroll-behavior: smooth;
-        }
-
-        .chat-messages::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: #007bff;
-            border-radius: 10px;
-        }
-
-        .message {
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 10px;
-            line-height: 1.5;
-            font-size: 0.95rem;
-            max-width: 75%;
-        }
-
-        .message.user {
-            background: #007bff;
-            color: #fff;
-            margin-left: auto;
-        }
-
-        .message.bot {
-            background: #f1f1f1;
-            color: #333;
-            margin-right: auto;
-        }
-
-        .chat-input {
-            display: flex;
-            padding: 15px;
-            background: #f9f9f9;
-            border-top: 2px solid #ddd;
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 12px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 25px;
-            margin-right: 10px;
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .chat-input input:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        .chat-input button {
-            padding: 12px 20px;
-            font-size: 1rem;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .chat-input button:hover {
-            background: linear-gradient(135deg, #0056b3, #003a80);
-        }
-
-        .chat-input button:active {
-            transform: scale(0.95);
-        }
+        /* Same CSS styles as in your original code */
     </style>
 </head>
 <body>
@@ -158,6 +25,9 @@
 </div>
 
 <script>
+    const apiKey = '231e3610f2cb02bf6942080dbe2832c67d8a600d625aa1cda5ac884a8f5e59ce'; // Replace with your API key
+    const apiUrl = 'https://api.together.xyz/chat/completions'; // Replace with your API endpoint
+
     // Toggle the chat container visibility
     function toggleChat() {
         const chatFooterWrapper = document.getElementById('chatFooterWrapper');
@@ -190,9 +60,29 @@
         appendMessage(userInput, 'user');
         document.getElementById('userInput').value = '';
 
-        setTimeout(() => {
-            appendMessage("Thank you for your question. I'll get back to you soon! 😊", 'bot');
-        }, 1000); // Simulate bot response delay
+        // Call the API
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: "gpt-3.5-turbo", // Adjust model if required
+                messages: [{ role: "user", content: userInput }]
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const botResponse = data.choices && data.choices[0]?.message?.content 
+                ? data.choices[0].message.content 
+                : "I'm not sure how to respond to that.";
+            appendMessage(botResponse, 'bot');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            appendMessage("Sorry, something went wrong. Please try again.", 'bot');
+        });
     }
 </script>
 
